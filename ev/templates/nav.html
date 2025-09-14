@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event X</title>
+    <!-- Tailwind CSS CDN Link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom hover animation for menu items */
+        .nav-link {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: white;
+            color: #4A4A4A; /* Dark color for better visibility */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Main Name -->
+            <div class="text-white text-2xl font-bold">
+                Event X
+            </div>
+
+            <!-- Desktop Navbar -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link text-white px-3 py-2 rounded">Home</a>
+                <a href="#" class="nav-link text-white px-3 py-2 rounded">Add Event</a>
+                <a href="#" class="nav-link text-white px-3 py-2 rounded">All Events</a>
+            </div>
+
+            <!-- Mobile Navbar Button -->
+            <div class="md:hidden">
+                <button id="navbar-toggler" class="text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden flex-col space-y-4 p-4 bg-gray-800 text-white">
+            <a href="#" class="nav-link px-3 py-2 rounded">Home</a>
+            <a href="#" class="nav-link px-3 py-2 rounded">Add Event</a>
+            <a href="#" class="nav-link px-3 py-2 rounded">All Events</a>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile menu toggle script
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
