@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -72,13 +73,18 @@ WSGI_APPLICATION = 'EVENT_MANAGEMENT.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+load_dotenv()
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':  "EVENT",  # Replace with your database name
+        'USER': os.getenv("DB_USER"),  # Replace with your database username
+        'PASSWORD': os.getenv("DB_P"),  # Replace with your database password
+        'HOST': 'localhost',  # Or the IP address of your PostgreSQL server
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
