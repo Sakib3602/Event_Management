@@ -1,18 +1,20 @@
-from django.shortcuts import render
-from ev.form import EventForm, Participent, CategoryForm
-
+from django.shortcuts import render , redirect
+from ev.form import EventForm, ParticipentForm, CategoryForm
+from django.contrib import messages
 # Create your views here.
 def home(request):
     return render(request, "banner.html")
 
+
 def AddEvent(request):
+    # Initialize the form instances
     e = EventForm()
-    p = Participent()
+    p = ParticipentForm()
     c = CategoryForm()
 
     if request.method == "POST":
         e = EventForm(request.POST)
-        p = Participent(request.POST)
+        p = ParticipentForm(request.POST)
         c = CategoryForm(request.POST)
 
         if c.is_valid() and e.is_valid() and p.is_valid():
@@ -26,12 +28,12 @@ def AddEvent(request):
 
             # Save the participant
             participant = p.save(commit=False)
-            participant.save()
+            participant.save()  # Save the participant to get an ID
 
             # Set the events for the participant (ManyToMany relationship)
-            participant.events.set(e.cleaned_data['events'])
+            participant.events.set(p.cleaned_data['events'])  # Use p.cleaned_data['events']
 
-            # Optionally, you can redirect or display a success message
-            return render(request, "success.html", {"message": "Event and participant added successfully"})
+            messages.success(request, "Task Created Successfully")
+            return redirect('add_event')
 
     return render(request, "create_event.html", {"e": e, "p": p, "c": c})
