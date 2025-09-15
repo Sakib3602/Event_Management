@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="POST">
-        {% csrf_token %}
-        
-
+    <form method="POST">
+            
+            {% csrf_token %}
+          
+            <button type="submit" class="mb-5 bg-rose-600 px-3 py-2 text-white mt-2 rounded-md">Submit</button>
     </form>
 </body>
 </html>
