@@ -1,24 +1,26 @@
 from django import forms
 from ev.models import Event, Participent, Category
 
-
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ["name", "description", "date", "time", "location", "category"]
+        fields = ['name', 'description', 'date', 'time', 'location', 'category']
+        
+        # Optionally, you can add widgets to style the form inputs (e.g., with Tailwind CSS)
         widgets = {
-            "date": forms.SelectDateWidget(),  # Dropdown for date
-            "time": forms.TimeInput(attrs={'type': 'time'}),  # Time input for time
+            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'time': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
         }
 
-# Create Participant Form
 class ParticipentForm(forms.ModelForm):
     class Meta:
         model = Participent
-        fields = ["name", "email", "events"]
+        fields = ['name', 'email', 'events']
+        widgets = {
+            'events': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
+        }
 
-# Create Category Form
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ["name", "description"]
+        fields = ['name', 'description']

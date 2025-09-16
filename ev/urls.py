@@ -1,7 +1,8 @@
 
 from django.urls import path 
-from ev.views import home, AddEvent
+from ev.views import home, AddEvent, Event_detail
 urlpatterns = [
-    path("", home),
-    path("add_event/", AddEvent , name = "add_event")
+    path("", home, name="home"),
+    path("add_event/", AddEvent , name = "add_event"),
+    path("event/<int:xoxo>/", Event_detail , name="event_detail"),
 ]

@@ -1,0 +1,68 @@
+{% extends "nav.html" %}
+{% block title %}Details page{% endblock title %}
+{% block nav %}
+<div class="bg-gray-100 font-sans text-gray-900">
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-6">
+
+        <!-- Title Section -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-blue-600">Event Details</h1>
+        </div>
+
+        <!-- Event Card -->
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <div class="p-6">
+
+                <!-- Event Name -->
+                <div class="mb-4">
+                    <h2 class="text-3xl font-semibold text-gray-800">Event: {{ event.name }}</h2>
+                </div>
+
+                <!-- Event Description -->
+                <div class="mb-6">
+                    <p class="text-lg text-gray-700">{{ event.description }}</p>
+                </div>
+
+                <!-- Event Date and Time -->
+                <div class="flex justify-between mb-6">
+                    <div class="text-lg">
+                        <p class="font-semibold text-gray-800">Date:</p>
+                        <p class="text-gray-600">{{ event.date }}</p>
+                    </div>
+                    <div class="text-lg">
+                        <p class="font-semibold text-gray-800">Time:</p>
+                        <p class="text-gray-600">{{ event.time }}</p>
+                    </div>
+                </div>
+
+                <!-- Event Location -->
+                <div class="mb-6">
+                    <p class="font-semibold text-gray-800">Location:</p>
+                    <p class="text-gray-600">{{ event.location }}</p>
+                </div>
+
+                <!-- Event Category -->
+                <div class="mb-6">
+                    <p class="font-semibold text-gray-800">Category:</p>
+                    <p class="text-gray-600">{{ event.category }}</p>
+                </div>
+
+            </div>
+
+            <!-- Back Button -->
+            <div class="p-6 bg-gray-50 text-center">
+                <a href="/" class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-300">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock nav %}
