@@ -52,9 +52,14 @@
             </div>
 
             <!-- Back Button -->
-            <div class="p-6 bg-gray-50 text-center">
+            <div class="p-6 bg-gray-50 text-center ">
                 <a href="/" class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-300">
                     Back to Home
+                </a>
+                <a href="{% url 'update_event' event.id %}">
+                <button  class="bg-yellow-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-300">
+                    Update Event
+                </button>
                 </a>
             </div>
         </div>

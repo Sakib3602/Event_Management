@@ -1,0 +1,49 @@
+{% extends "nav.html" %}
+
+{% block title %}Add Event{% endblock %}
+
+{% block nav %}
+    <!-- Success message (only displayed if message exists) -->
+     <div class="w-1/2 mx-auto mt-8">
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="px-2 py-1 {% if message.tags == 'success' %}bg-green-500{% endif %} ">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div>
+
+            <h2 class="text-4xl font-semibold mb-6 text-gray-800">Update Event</h2>
+        </div>
+
+    <!-- Form for adding Event, Participant, and Category -->
+    <form method="POST" class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        {% csrf_token %}
+        
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Create Event</h2>
+
+        <!-- Category Form Section -->
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-4 text-gray-700">Category</h3>
+            {{ c.as_p }}  <!-- Render all fields of the Category form -->
+        </div>
+
+        <!-- Event Form Section -->
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-4 text-gray-700">Event</h3>
+            {{ e.as_p }}  <!-- Render all fields of the Event form -->
+        </div>
+
+        <!-- Participant Form Section -->
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-4 text-gray-700">Participant</h3>
+            {{ p.as_p }}  <!-- Render all fields of the Participant form -->
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200">
+            Submit
+        </button>
+    </form>
+{% endblock %}

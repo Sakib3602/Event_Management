@@ -10,11 +10,10 @@ class Event(models.Model):
     date = models.DateField()
     time = models.TimeField()
     location = models.CharField(max_length=200)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE ,default=None)
+    category = models.ForeignKey("Category", on_delete=models.CASCADE ,default=None, related_name="events")
     
     def __str__(self):
         return self.name
-    
     
 class Participent(models.Model):
     #  name, email, and a ManyToMany relationship with Event.
@@ -23,7 +22,7 @@ class Participent(models.Model):
     events = models.ManyToManyField(Event, related_name='participants')
     
     def __str__(self):
-        return self.name
+        return self.name,self.email
     
     
 class Category(models.Model):   
@@ -33,3 +32,7 @@ class Category(models.Model):
     
     def __str__(self):
         return self.name
+    
+    
+
+    
