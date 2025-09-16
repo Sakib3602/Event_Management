@@ -6,7 +6,7 @@ from ev.models import Event
 
 
 def home(request):
-    d = Event.objects.select_related("category").all()[:6]
+    d = Event.objects.select_related("category").all()
 
     for event in d:
         print(event.description)
@@ -88,3 +88,19 @@ def Update_event(request, id):
             redirect('update_event', id=id)
 
     return render(request, "update.html", {'e': e, 'p': p, 'c': c})
+
+
+def Delete_event(request, id):
+    if request.method == "POST":
+        ev = Event.objects.get(id=id)
+        ev.delete()
+        return redirect('home')
+    else:
+        messages.error(request, "Invalid request method.")
+        return redirect('event_detail', xoxo=id)
+    
+    
+def All_Event(request):
+    ev = Event.objects.select_related("category").all()
+
+    return render(request, "allcard.html", {"ev": ev})

@@ -2,7 +2,13 @@
 {% block title %}Details page{% endblock title %}
 {% block nav %}
 <div class="bg-gray-100 font-sans text-gray-900">
-
+{% if messages %}
+    <div>
+        {% for message in messages %}
+            <p>{{ message }}</p>  <!-- Display each message -->
+        {% endfor %}
+    </div>
+{% endif %}
     <!-- Main Container -->
     <div class="container mx-auto p-6">
 
@@ -61,6 +67,10 @@
                     Update Event
                 </button>
                 </a>
+              <form method="POST" action="{% url 'delete_event' event.id %}">
+                {% csrf_token %}
+                 <button type="submit" class="bg-red-800 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-300">Delete</button>
+            </form>
             </div>
         </div>
 
