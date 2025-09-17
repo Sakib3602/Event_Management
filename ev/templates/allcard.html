@@ -17,7 +17,10 @@
                 <p class="text-lg text-gray-700">Time: <span class="font-semibold">{{ e.time }}</span></p>
                 
                 <!-- View Button -->
-                <button class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 focus:outline-none transition duration-300">View</button>
+                <a href='{% url "event_detail" e.id %}'>
+
+                    <button class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 focus:outline-none transition duration-300">View</button>
+                </a>
             </div>
         </div>
         {% endfor %}
